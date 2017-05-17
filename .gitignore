@@ -5,3 +5,4 @@ __pycache_/
 .DS_Store
 *.sqlite3
 node_modules/
+joshgrid/mail_api/static/
