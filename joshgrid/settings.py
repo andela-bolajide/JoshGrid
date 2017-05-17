@@ -139,3 +139,11 @@ STATIC_URL = '/static/'
 # CORS headers: allow all hosts to access the API
 #
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CELERY Configuration
+CELERY_BROKER_URL = os.environ.get('BROKER_URL')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_BACKEND')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = os.environ.get('CELERY_TIMEZONE')
