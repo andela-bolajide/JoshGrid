@@ -1,0 +1,27 @@
+{
+  "name": "joshgrid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-bolajide/JoshGrid.git"
+  },
+  "author": "Bolaji Olajide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-bolajide/JoshGrid/issues"
+  },
+  "homepage": "https://github.com/andela-bolajide/JoshGrid#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "wiredep": "^4.0.0"
+  }
+}
