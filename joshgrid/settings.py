@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'joshgrid.mail_api'
+    'joshgrid.mail_api',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
