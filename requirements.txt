@@ -4,6 +4,8 @@ billiard==3.5.0.2
 celery==4.0.2
 click==6.7
 Django==1.11.1
+django-celery-beat==1.0.1
+django-celery-results==1.0.1
 djangorestframework==3.6.3
 kombu==4.0.2
 packaging==16.8
