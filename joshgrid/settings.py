@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'joshgrid.mail_api',
     'django_celery_beat',
     'django_celery_results',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
