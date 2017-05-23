@@ -6,3 +6,5 @@ __pycache_/
 *.sqlite3
 node_modules/
 joshgrid/mail_api/static/
+.vscode
+.idea
