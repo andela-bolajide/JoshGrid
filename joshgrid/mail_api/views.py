@@ -59,7 +59,7 @@ def mail_detail(request, pk):
 
     if request.method == 'GET':
         serializer = MailSerializer(mail)
-        return JsonResponse(serializer.data)
+        return JsonResponse(serializer.data, status=200)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
