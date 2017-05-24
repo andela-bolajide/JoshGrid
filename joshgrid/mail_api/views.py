@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from django.http import Http404
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, mixins, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -26,47 +26,17 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class MailList(APIView):
+class MailList(generics.ListCreateAPIView):
     """
-    List all mails, or create a new mail.
+    API endpoint that allows Mail to be created or gotten.
     """
-    def get(self, request, format=None):
-        mail = Mail.objects.all()
-        serializer = MailSerializer(mail, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def post(self, request, format=None):
-        serializer = MailSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Mail.objects.all()
+    serializer_class = MailSerializer
 
 
-class MailDetail(APIView):
+class MailDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve, update or delete a snippet instance.
+    API endpoint that allows a mail to be retrieved, updated and deleted.
     """
-    def get_object(self, pk):
-        try:
-            return Mail.objects.get(pk=pk)
-        except Mail.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        mail = self.get_object(pk)
-        serializer = MailSerializer(mail)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        mail = self.get_object(pk)
-        serializer = MailSerializer(mail, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        mail = self.get_object(pk)
-        mail.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Mail.objects.all()
+    serializer_class = MailSerializer
