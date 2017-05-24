@@ -18,9 +18,6 @@ class Mail(models.Model):
     delivered = models.BooleanField(default=False)
     read = models.BooleanField(default=False)
     time_created = models.DateTimeField(auto_now_add=True)
-    time_sent = models.DateTimeField(blank=True)
-    time_delivered = models.DateTimeField(blank=True)
-    time_read = models.DateTimeField(blank=True)
 
 
     class Meta:
