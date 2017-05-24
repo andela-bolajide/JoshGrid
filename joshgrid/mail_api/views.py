@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework import viewsets
-from rest_framework.renderers import JSONRenderer
+from rest_framework import viewsets, status
+from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
 
 from joshgrid.mail_api.models import Mail
 from joshgrid.mail_api.serializers import UserSerializer, GroupSerializer, MailSerializer
@@ -29,6 +30,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
 def mail_list(request):
     """
     List all mails, or create a new mail.
@@ -36,18 +38,17 @@ def mail_list(request):
     if request.method == 'GET':
         mail = Mail.objects.all()
         serializer = MailSerializer(mail, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = MailSerializer(data=data)
+        serializer = MailSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
 def mail_detail(request, pk):
     """
     Retrieve, update or delete a mail.
@@ -55,20 +56,19 @@ def mail_detail(request, pk):
     try:
         mail = Mail.objects.get(pk=pk)
     except Mail.DoesNotExist:
-        return HttpResponse(status=404)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         serializer = MailSerializer(mail)
         return JsonResponse(serializer.data, status=200)
 
     elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = MailSerializer(mail, data=data)
+        serializer = MailSerializer(mail, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         mail.delete()
-        return HttpResponse(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)
