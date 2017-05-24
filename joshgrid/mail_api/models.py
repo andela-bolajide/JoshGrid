@@ -22,3 +22,6 @@ class Mail(models.Model):
 
     class Meta:
         ordering = ('time_created',)
+
+    def __str__(self):
+        return "{}".format(self.mail_subject)
