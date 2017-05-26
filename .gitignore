@@ -11,3 +11,4 @@ joshgrid/mail_api/static/
 assets/
 **/*.db
 *.db
+.coverage
