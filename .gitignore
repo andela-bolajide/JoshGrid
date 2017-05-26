@@ -9,3 +9,5 @@ joshgrid/mail_api/static/
 .vscode
 .idea
 assets/
+**/*.db
+*.db
