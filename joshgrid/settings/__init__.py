@@ -4,5 +4,5 @@ import os
 if not os.environ.get('CI') and not os.environ.get('HEROKU'):
     from .development import *
 
-if os.environ.get('HEROKU') is not None:
+if os.environ.get('HEROKU'):
     from .production import *
