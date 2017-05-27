@@ -12,3 +12,4 @@ assets/
 **/*.db
 *.db
 .coverage
+bundle.js 

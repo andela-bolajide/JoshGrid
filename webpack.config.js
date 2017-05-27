@@ -1,31 +1,28 @@
-const webpack = require('webpack');
-const path = require('path');
-
+// webpack.config.js
 module.exports = {
-  entry: [
-    './app.js'
-  ],
+  entry: './main.js',
   output: {
-    path: path.join(__dirname, '/'),
-    filename: 'bundle.js'
+    // path: 'build', // This is where images AND js will go
+    publicPath: 'https://joshgrid.herokuapp.com/', // This is used to generate URLs to e.g. images
+    filename: 'bundle.js'       
   },
   module: {
     loaders: [
-      {
-        test: /\.(js|jsx)$/, 
-        exclude: /node_modules/,
-        loaders: 'babel-loader',
-        query: {
-            presets: ['react']
-          }
+      { test: /(\.css)$/, 
+        loaders: ['style', 'css'] 
       },
       {
-        test: /(\.css)$/, 
-        loaders: ['style', 'css']
-      }
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    // you can now require('file') instead of require('file.coffee')
+    extensions: ['.js', '.json', '.jsx'] 
   }
-}
+};
