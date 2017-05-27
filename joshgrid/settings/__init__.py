@@ -1,5 +1,7 @@
-from __future__ import unicode_literals
 import os
+
+if os.environ.get('CI'):
+    from .test import *
 
 if not os.environ.get('CI') and not os.environ.get('HEROKU'):
     from .development import *
