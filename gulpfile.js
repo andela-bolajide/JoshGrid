@@ -21,9 +21,8 @@ gulp.task('lint', () => {
 });
 
 gulp.task('inject', () => {
-  gulp.src('./joshgrid/mail_api/templates/*.html')
+  gulp.src('./index.html')
     .pipe(wiredep(options))
-    .pipe(gulp.dest('./joshgrid/mail_api/templates'));
 });
 
 gulp.task('default', ['lint'], () => {
