@@ -4,6 +4,7 @@
   "description": "An API for sending emails.",
   "main": "main.js",
   "scripts": {
+    "start": "webpack-dev-server --open",
     "build": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -41,10 +42,12 @@
     "graceful-fs": "^4.1.11",
     "material-ui": "^0.18.1",
     "minimatch": "^3.0.4",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "devDependencies": {
     "css-loader": "^0.28.3",
