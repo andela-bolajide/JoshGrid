@@ -3,3 +3,6 @@
 show_missing = True
 omit =
     */python?.?/*
+    joshgrid/settings/*
+    joshgrid/wsgi.py
+    joshgrid/mail_api/migrations/*
