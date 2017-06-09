@@ -5,12 +5,13 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.join(__dirname,'./dist/'),
-    filename: 'bundle.js'       
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     loaders: [
-        { test: /(\.css)$/, 
-          loaders: ['style', 'css'] 
+        { test: /(\.css)$/,
+          loaders: ['style', 'css']
         },
         {
           test: /\.(js|jsx)$/,
@@ -21,8 +22,11 @@ module.exports = {
         }
     ]
   },
+  devServer: {
+    historyApiFallback: true
+  },
   resolve: {
     // you can now require('file') instead of require('file.coffee')
-    extensions: ['.js', '.json', '.jsx'] 
+    extensions: ['.js', '.json', '.jsx']
   }
 };
