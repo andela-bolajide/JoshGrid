@@ -1,3 +1,5 @@
+"""Define settings using values of environment variables."""
+
 import os
 
 if os.environ.get('CI'):
