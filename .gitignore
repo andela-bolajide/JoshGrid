@@ -14,3 +14,6 @@ assets/
 .coverage
 dist/
 npm-debug.log
+celerybeat.pid
+dump.rdb
+yarn-error.log

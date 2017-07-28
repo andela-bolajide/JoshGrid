@@ -4,6 +4,4 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/?branch=develop)
 [![Build Status](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/build-status/develop)
 
-
-
 # JoshGrid

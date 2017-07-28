@@ -1,3 +1,5 @@
+"""Write Test for JoshGrid Mail API."""
+
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from rest_framework.test import APIClient
@@ -6,6 +8,7 @@ from rest_framework import status
 from .models import Mail
 
 # Create your tests here.
+
 
 class ModelTestCase(TestCase):
     """This class defines the test suite for the Mail model."""
@@ -17,7 +20,8 @@ class ModelTestCase(TestCase):
         self.receiver_name = "Seni"
         self.receiver_address = "seni@yahoo.com"
         self.mail_subject = "Test Mail"
-        self.mail_body = "Hello, this is just a test. Don't bother taking this serious."
+        self.mail_body = "Hello, this is just a test. \
+            Don't bother taking this serious."
         self.mail = Mail(
             sender_address=self.sender_address,
             sender_name=self.sender_name,
@@ -43,13 +47,14 @@ class ViewTestCase(TestCase):
         self.sender_address = "bolaji@yahoo.com"
         self.receiver_address = "seni@yahoo.com"
         self.mail_subject = "Test Mail"
-        self.mail_body = "Hello, this is just a test. Don't bother taking this serious."
+        self.mail_body = "Hello, this is just a test. \
+            Don't bother taking this serious."
         self.client = APIClient()
         self.mail = {
             "sender_address": self.sender_address,
-            "receiver_address":self.receiver_address,
-            "mail_subject":self.mail_subject,
-            "mail_body":self.mail_body
+            "receiver_address": self.receiver_address,
+            "mail_subject": self.mail_subject,
+            "mail_body": self.mail_body
         }
         self.response = self.client.post(
             reverse('create'),

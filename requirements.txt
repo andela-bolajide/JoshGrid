@@ -6,9 +6,10 @@ dj-database-url==0.4.2
 Django==1.11.1
 django-celery-beat==1.0.1
 django-celery-results==1.0.1
+django-mailgun==0.9.1
 djangorestframework==3.6.3
+docopt==0.6.2
 ipython==6.0.0
 psycopg2==2.7.1
-python-dotenv==0.6.4
-redis==2.10.5
+python-env==1.0.0
 sendgrid==4.1.0
