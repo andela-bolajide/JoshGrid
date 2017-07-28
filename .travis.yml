@@ -8,4 +8,7 @@ language: python
  script:
    - coverage run --source='.' manage.py test joshgrid
  after_success:
-   coveralls 
+   coveralls
+# Slack notifications
+notifications:
+    slack: protongroup:bCyAwaxR9YXbOggBjouCJq2d
