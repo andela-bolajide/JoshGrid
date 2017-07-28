@@ -16,7 +16,7 @@ django-celery-results==1.0.1
 djangorestframework==3.6.3
 docopt==0.6.2
 gunicorn==19.7.1
-ipython==6.0.0
+ipython==6.1.0
 ipython-genutils==0.2.0
 jedi==0.10.2
 kombu==4.0.2
