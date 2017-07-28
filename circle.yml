@@ -2,13 +2,11 @@ dependencies:
   override:
     - yarn install
 
-general:
-  build_dir: src
+test:
+  override:
+    - yarn test
 
 machine:
-  test:
-    override:
-      - yarn test
   timezone:
     Africa/Lagos # Set the timezone
   node:
