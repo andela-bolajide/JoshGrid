@@ -4,6 +4,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/andela-bolajide/JoshGrid/?branch=develop)
 [![CircleCI](https://circleci.com/gh/BolajiOlajide/JoshGrid.svg?style=svg)](https://circleci.com/gh/BolajiOlajide/JoshGrid)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/758b040267914a11828fdb89fd333d97)](https://www.codacy.com/app/andela-bolajide/JoshGrid?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andela-bolajide/JoshGrid&amp;utm_campaign=Badge_Grade)
+[![Python 3](https://pyup.io/repos/github/BolajiOlajide/JoshGrid/python-3-shield.svg)](https://pyup.io/repos/github/BolajiOlajide/JoshGrid/)
+[![Updates](https://pyup.io/repos/github/BolajiOlajide/JoshGrid/shield.svg)](https://pyup.io/repos/github/BolajiOlajide/JoshGrid/)
 
 # JoshGrid
 

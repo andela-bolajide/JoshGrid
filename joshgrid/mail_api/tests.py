@@ -34,6 +34,7 @@ class ModelTestCase(TestCase):
 
     def test_model_can_create_a_mail(self):
         """Test the Mail model can create a mail."""
+
         old_count = Mail.objects.count()
         self.mail.save()
         new_count = Mail.objects.count()

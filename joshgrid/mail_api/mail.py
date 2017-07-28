@@ -2,8 +2,6 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 
-import requests
-
 def local_send_email(request):
     print(settings)
     subject = request.POST.get('mail_subject', '')
