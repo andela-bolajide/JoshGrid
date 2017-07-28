@@ -29,7 +29,7 @@ This repository contains the backend and frontend of a MAIL-sending application.
 - [react-dom](https://facebook.github.io/react/docs/react-dom.html) - provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to.
 - [react-router](https://reacttraining.com/react-router/), [react-router-dom](https://reacttraining.com/react-router/) - Declarative routing for React
 - [toastr](https://codeseven.github.io/toastr/) -  a Javascript library for Gnome / Growl type non-blocking notifications.
-- [webpack](https://webpack.js.org/) - a module bundler. 
+- [webpack](https://webpack.js.org/) - a module bundler.
 
 ### Backend Dependencies
 - [Celery](http://www.celeryproject.org/) - Celery is an asynchronous task queue/job queue based on distributed message passing.
@@ -45,6 +45,16 @@ This repository contains the backend and frontend of a MAIL-sending application.
 - [iPython](https://ipython.org/install.html) - a command shell for interactive computing in multiple programming languages.
 - [psycopg2](http://initd.org/psycopg/) - the most popular PostgreSQL adapter for the Python programming language.
 - [python-env](https://pypi.python.org/pypi/python-env/1.0.0) - Get and Set environment variables using .env file
+
+## Testing
+The project is divided into frontend (React) and backend (Django) and it was developed using TDD (Test-Driven development) methodology. To run:
+- frontend tests:
+Use the command `yarn test`
+
+- backend tests:
+Use the command: `python manage.py test`
+
+You can also run both by using a shell script i wrote: `./run-test.sh`.
 
 ### Author
 - [Bolaji Olajide](https://twitter.com/Bolaji___)
