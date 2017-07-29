@@ -1,47 +1,53 @@
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
 
+// webpack.config.js
 module.exports = {
+  devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?/',
-    'webpack/hot/dev-server',
-    './src/main.js'
+    'eventsource-polyfill',
+    'webpack-hot-middleware/client?reload=true',
+    path.resolve(__dirname, 'src/index')
   ],
-  resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss']
-  },
-  devServer: {
-    historyApiFallback: true
-  },
+  target: 'web',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.join(__dirname, './dist/'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     loaders: [
+      { test: /(\.css)$/, loaders: ['style-loader', 'css-loader'] },
       {
-        test: /\.js|\.jsx?$/,
-        use: ['babel-loader?presets[]=react,presets[]=es2015,plugins[]=transform-decorators-legacy'],
-        exclude: [path.resolve(__dirname, 'node_modules/')]
+        test: /\.(js|jsx)$/,
+        include: path.join(__dirname, 'src'),
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
+      { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
       },
       {
-        test: /\.scss|\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader!sass-loader!less-loader',
-        }),
-      },
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      }
     ]
   },
-  target: 'web',
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'src')
+  },
   plugins: [
-    new ExtractTextPlugin('css/bundle.style.css'),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
-    })
-  ]
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
+  resolve: {
+    // you can now require('file') instead of require('file.coffee')
+    extensions: ['.js', '.json', '.jsx']
+  }
 };

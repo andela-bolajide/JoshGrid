@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo 'Running Backend (Django-Celery) tests:'
 
 python manage.py test
