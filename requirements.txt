@@ -9,7 +9,7 @@ coverage==4.4.1
 coveralls==1.1
 decorator==4.1.2
 dj-database-url==0.4.2
-Django==1.11.3
+Django==1.11.4
 django-anymail==0.11.1 # pyup:ignore
 django-celery-beat==1.0.1
 django-celery-results==1.0.1
@@ -31,12 +31,12 @@ ptyprocess==0.5.2
 Pygments==2.2.0
 pyparsing==2.2.0
 python-env==1.0.0 # pyup:ignore
-python-http-client==2.4.0
+python-http-client==3.0.0
 pytz==2017.2
 PyYAML==3.12
 redis==2.10.5
 requests==2.18.3
-sendgrid==4.2.0
+sendgrid==5.0.0
 simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.3.2
