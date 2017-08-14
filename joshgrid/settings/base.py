@@ -13,27 +13,19 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 from os.path import join
 import os
 
-from dotenv import load_dotenv
+import dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Load the .env file for environment variable
-dotenv_path = join(BASE_DIR, '.env')
-load_dotenv(dotenv_path)
-
+dotenv.load()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+SECRET_KEY = dotenv.get('SECRET_KEY')
 
 # Application definition
 
@@ -44,7 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'joshgrid.mail_api'
+    'joshgrid.mail_api',
+    'django_celery_beat',
+    'django_celery_results',
+    'rest_framework',
+    'joshgrid.bolaji',
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -76,21 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'joshgrid.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME'),
-        'USER': os.environ.get('DATABASE_USER'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-        'HOST': os.environ.get('DATABASE_HOST'),
-        'PORT': os.environ.get('DATABASE_PORT'),
-    }
-}
 
 
 # Password validation
@@ -139,3 +121,28 @@ STATIC_URL = '/static/'
 # CORS headers: allow all hosts to access the API
 #
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CELERY Configuration
+CELERY_BROKER_URL = dotenv.get('BROKER_URL')
+CELERY_RESULT_BACKEND = dotenv.get('CELERY_BACKEND')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = dotenv.get('CELERY_TIMEZONE')
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAdminUser',
+    # ],
+    'PAGE_SIZE': 10
+}
+
+# MAILGUN SETTINGS
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "MAILGUN_API_KEY": dotenv.get('MAILGUN_ACCESS_KEY'),
+    "MAILGUN_SENDER_DOMAIN": dotenv.get('MAILGUN_SERVER_NAME'),  # your Mailgun domain, if needed
+}
+
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
+DEFAULT_FROM_EMAIL = dotenv.get('DEFAULT_FROM_EMAIL', default="mail@joshgrid.com")  # if you don't already have this in settings

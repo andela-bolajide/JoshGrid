@@ -1,4 +1,4 @@
-"""joshgrid URL Configuration
+"""Joshgrid URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -13,9 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    url(r'^', include('joshgrid.mail_api.urls')),
+    url(r'^auth/', include('rest_framework.urls',
+        namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),
 ]

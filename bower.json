@@ -1,0 +1,17 @@
+{
+  "name": "joshgrid",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Bolaji Olajide"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BolajiOlajide/JoshGrid",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -4,3 +4,16 @@
 __pycache_/
 .DS_Store
 *.sqlite3
+node_modules/
+joshgrid/mail_api/static/
+.vscode
+.idea
+assets/
+**/*.db
+*.db
+.coverage
+dist/
+npm-debug.log
+celerybeat.pid
+dump.rdb
+yarn-error.log

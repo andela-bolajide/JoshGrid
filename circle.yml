@@ -1,0 +1,15 @@
+dependencies:
+  override:
+    - yarn install
+
+test:
+  override:
+    - yarn test
+
+machine:
+  timezone:
+    Africa/Lagos # Set the timezone
+  node:
+    version: 6.11.0
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
