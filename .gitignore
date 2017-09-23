@@ -4,7 +4,6 @@
 __pycache_/
 .DS_Store
 *.sqlite3
-node_modules/
 joshgrid/mail_api/static/
 .vscode
 .idea
@@ -17,3 +16,7 @@ npm-debug.log
 celerybeat.pid
 dump.rdb
 yarn-error.log
+node_modules/
+bower_components/
+client/bundles/
+webpack-stats.json

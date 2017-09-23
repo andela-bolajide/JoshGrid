@@ -1,4 +1,4 @@
-# Production specific settings
+"""Production specific settings."""
 from .base import *
 
 # Parse database configuration from $DATABASE_URL

@@ -1,9 +1,37 @@
-#!/bin/bash
+build_front_end() {
+    cd /joshgrid/mail_app/static
+    yarn install
+}
 
-echo 'Running Backend (Django-Celery) tests:'
+run_back_end_tests() {
+  python manage.py test
+}
 
-python manage.py test
+run_front_end_tests() {
+  build_front_end
+  cd /joshgrid/mail_app/static
+  yarn test
+}
 
-echo 'Running Frontend (React) tests:'
+if [[ $1 == "backend" ]]; then
+    shift
+    run_back_end_tests $@
+    rc=$?
+elif [[ $1 == "frontend" ]]; then
+    run_front_end_tests
+    rc=$?
+else
+    run_back_end_tests $@
+    backend_rc=$?
+    run_front_end_tests
+    frontend_rc=$?
+    echo
 
-yarn test
+    if [[ $backend_rc == 0 && $frontend_rc == 0 ]]; then
+        echo "All tests pass!!!"
+        exit 0
+    else
+        echo "FAIL FAIL FAIL FAIL FAIL FAIL FAIL FAIL. Some tests failed, see above for details."
+        exit 1
+    fi
+fi

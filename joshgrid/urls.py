@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from joshgrid.mail_app import views
+
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    url(r'^', include('joshgrid.mail_api.urls')),
+    url(r'^$', views.index, name='home'),
+    url(r'^api/', include('joshgrid.mail_api.urls')),
     url(r'^auth/', include('rest_framework.urls',
         namespace='rest_framework')),
     url(r'^admin/', admin.site.urls),

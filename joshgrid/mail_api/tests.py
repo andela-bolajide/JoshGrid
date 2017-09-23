@@ -1,16 +1,15 @@
 """Write Test for JoshGrid Mail API."""
 
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 from django.test import TestCase
-from rest_framework.test import APIClient
-from rest_framework import status
+# from rest_framework.test import APIClient
+# from rest_framework import status
 
 from .models import Mail
 
+
 # Create your tests here.
-
-
 class ModelTestCase(TestCase):
     """This class defines the test suite for the Mail model."""
 
@@ -34,7 +33,6 @@ class ModelTestCase(TestCase):
 
     def test_model_can_create_a_mail(self):
         """Test the Mail model can create a mail."""
-
         old_count = Mail.objects.count()
         self.mail.save()
         new_count = Mail.objects.count()

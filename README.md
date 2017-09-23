@@ -48,15 +48,16 @@ This repository contains the backend and frontend of a MAIL-sending application.
 - [psycopg2](http://initd.org/psycopg/) - the most popular PostgreSQL adapter for the Python programming language.
 - [python-env](https://pypi.python.org/pypi/python-env/1.0.0) - Get and Set environment variables using .env file
 
+## Installation
+
+To install `JoshGrid`, do the following:
+- Clone the project from github with the command `git clone https://github.com/BolajiOlajide/JoshGrid`
+- Install Redis with `brew install redis` on OSX or checkout the [docs](https://redis.io/) for how to install on other OS.
+
 ## Testing
-The project is divided into frontend (React) and backend (Django) and it was developed using TDD (Test-Driven development) methodology. To run:
-- frontend tests:
-Use the command `yarn test`
-
-- backend tests:
-Use the command: `python manage.py test`
-
-You can also run both by using a shell script i wrote: `./run-test.sh`.
+The project is divided into frontend (React) and backend (Django) and it was developed using TDD (Test-Driven development) methodology.
+A shell script is available for running the test, which is easy to use with the command `./run-test.sh`.
+You can specify if you want to run backend test with the command `./run-test.sh backend` or frontend tests with the command `./run-test.sh frontend`
 
 ### Author
 - [Bolaji Olajide](https://twitter.com/Bolaji___)
