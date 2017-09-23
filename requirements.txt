@@ -26,7 +26,7 @@ pbr==3.1.1
 pexpect==4.2.1
 pickleshare==0.7.4
 prompt-toolkit==1.0.15
-psycopg2==2.7.3
+psycopg2==2.7.3.1
 ptyprocess==0.5.2
 Pygments==2.2.0
 pyparsing==2.2.0
