@@ -2,43 +2,88 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) || JSON.stringify('staging')
-};
+const ExtractAppCSS = new ExtractTextPlugin({
+  filename: 'css/app.css',
+  allChunks: true
+});
+const ExtractVendorCSS = new ExtractTextPlugin({
+  filename: 'css/vendor.css',
+  allChunks: true
+});
 
-// webpack.config.js
 module.exports = {
   devtool: 'source-map',
-  entry: path.resolve(__dirname, 'src/index'),
-  target: 'web',
-  output: {
-    path: path.join(__dirname,'./dist/'), // Note: Physical files are only output by the production build task `npm run build`.
-    filename: 'bundle.js',
-    publicPath: '/'
-  },
-  module: {
-    loaders: [
-      { test: /\.(js|jsx)$/, include: path.join(__dirname, 'src'),loader: 'babel-loader', query: { presets: ['es2015', 'react'] } },
-      { test: /(\.css)$/, loader: ExtractTextPlugin.extract('css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader!sass-loader') },
-      { test: /\.(jpe?g|png|gif|svg|jpg|otf)$/i, loaders: [ 'file-loader', 'image-webpack-loader' ] },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
-      { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
-    ]
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, 'dist')
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin(GLOBALS),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',
+      filename: 'js/vendor.js',
+      minChunks: function min(module) {
+        return (typeof module.context === 'string' )
+        &&
+        (module.context.indexOf('node_modules') >= 0);
+      }
+    }),
+    ExtractAppCSS,
+    ExtractVendorCSS,
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true,
+        warnings: false
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      comments: false,
+      sourceMap: true
+    })
   ],
-  resolve: {
-    // you can now require('file') instead of require('file.coffee')
-    extensions: ['.ts', '.tsx', '.js']
+  entry: [
+    './client/js/index.js'
+  ],
+  target: 'web',
+  output: {
+    path: path.join(__dirname, 'static'),
+    filename: 'js/app.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        query: { presets: ['es2015', 'react'] }
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractAppCSS.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!csso-loader!sass-loader'
+        })
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractVendorCSS.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?sourceMap!csso-loader'
+        })
+      },
+      {
+        test: /\.(jpg|png|svg|gif)$/,
+        loader: 'url-loader'
+      }
+    ]
   }
 };

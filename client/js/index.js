@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // rorutes
-import Main from './routes';
+import Routes from './routes';
 
-ReactDOM.render(<Main />, document.getElementById('app'));
+import '../css/bulma/bulma.sass';
+
+ReactDOM.render(<Routes />, document.getElementById('app'));

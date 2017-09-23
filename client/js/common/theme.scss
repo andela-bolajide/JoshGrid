@@ -1,0 +1,26 @@
+// @import 'bulma/bulma.scss';
+
+/* Color Pallette */
+$colors: (
+  light: #FFF,
+  dark: #000
+);
+
+// Global Rule Definitions
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100%;
+  height: 100vh;
+  max-height: 100%;
+}
+
+body, div, h1, h2, h3, h4, p, a {
+  font-family: 'Saira Extra Condensed';
+  font-weight: 300;
+}

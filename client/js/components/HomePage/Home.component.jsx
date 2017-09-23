@@ -1,12 +1,10 @@
 import React from 'react';
 
 // component
-import Footer from '../../common/footer/Footer.component';
-//import TextInput from 'grommet/components/TextInput';
-import {Button, IconButton} from 'react-toolbox/lib/button';
+import Footer from '../Footer/Footer.component';
 
 // styles
-import './home.scss';
+import './Home.scss';
 
 class HomeComponent extends React.Component {
   constructor(props){
@@ -22,6 +20,18 @@ class HomeComponent extends React.Component {
             <input name="username" type="text" />
             <input name="password" type="password" />
           </div>
+          <section className="hero">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">
+                  Hero title
+                </h1>
+                <h2 className="subtitle">
+                  Hero subtitle
+                </h2>
+              </div>
+            </div>
+          </section>
         </div>
         <Footer />
       </div>

@@ -1,7 +1,6 @@
-const path = require("path");
+const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
-const postcssConfig = path.resolve(process.cwd(), './postcss.config.js');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -9,12 +8,12 @@ module.exports = {
   entry: './client/js/index.js',
   target: 'web',
   output: {
-      path: path.join(__dirname, './static/'),
-      filename: 'js/[name].js',
-      publicPath: 'http://0.0.0.0:9000/',
+    path: path.join(__dirname, './static/'),
+    filename: 'js/[name].js',
+    publicPath: 'http://0.0.0.0:9000/',
   },
   plugins: [
-    new BundleTracker({filename: './webpack-stats.json'}),
+    new BundleTracker({ filename: './webpack-stats.json' }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
@@ -25,18 +24,42 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['es2015', 'react'] } },
-      { test: /(\.css)$/, loader: 'style-loader!css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader!sass-loader' },
-      { test: /(\.scss)$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-      { test: /\.(jpeg|png|gif|svg|jpg)$/, loader: 'url-loader?limit=25000' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
-      { test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      },
+      {
+        test: /(\.css|scss|sass)$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(jpeg|png|gif|svg|jpg)$/,
+        loader: 'url-loader?limit=25000'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(woff|woff2)$/,
+        loader: 'url?prefix=font/&limit=5000'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      }
     ],
   },
   devServer: {
-    host: "0.0.0.0",
+    host: '0.0.0.0',
     publicPath: 'http://0.0.0.0:9000/',
     headers: { 'Access-Control-Allow-Origin': '*' },
     compress: true,
@@ -59,4 +82,4 @@ module.exports = {
     modules: ['node_modules', 'bower_components'],
     extensions: ['.js', '.jsx']
   },
-}
+};

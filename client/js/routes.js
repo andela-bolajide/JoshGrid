@@ -6,7 +6,7 @@ import HomeComponent from './components/HomePage/Home.component'
 
 const Router = BrowserRouter;
 
-class Main extends React.Component {
+class Routes extends React.Component {
   render() {
     return (
       <Router>
@@ -18,4 +18,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default Routes;

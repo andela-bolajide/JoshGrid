@@ -1,25 +1,28 @@
-build_front_end() {
-    cd /joshgrid/mail_app/static
-    yarn install
+#!/bin/bash
+
+build_back_end() {
+    python manage.py makemigrations
+    python manage.py migrate
 }
 
 run_back_end_tests() {
+  build_back_end
   python manage.py test
 }
 
 run_front_end_tests() {
-  build_front_end
-  cd /joshgrid/mail_app/static
+  if ! [ -d "node_modules" ]; then
+    # run npm install to install dependencies
+    yarn install
+  fi
   yarn test
 }
 
 if [[ $1 == "backend" ]]; then
     shift
     run_back_end_tests $@
-    rc=$?
 elif [[ $1 == "frontend" ]]; then
     run_front_end_tests
-    rc=$?
 else
     run_back_end_tests $@
     backend_rc=$?
