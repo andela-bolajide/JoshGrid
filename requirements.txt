@@ -6,7 +6,7 @@ celery==4.1.0
 click==6.7
 cloudinary==1.8.0
 coverage==4.4.1
-coveralls==1.1
+coveralls==1.2.0
 decorator==4.1.2
 dj-database-url==0.4.2
 Django==1.11.4
