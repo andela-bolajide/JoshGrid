@@ -1,4 +1,5 @@
 import React from 'react';
+import TypedText from '../../common/TypedText.jsx';
 
 // component
 import Footer from '../Footer/Footer.component';
@@ -12,26 +13,33 @@ class HomeComponent extends React.Component {
   }
 
   render() {
+    // const typed = new Typed('.element', {
+    //   stringsElement: '#typed-strings'
+    // });
     return (
       <div className="home-container">
-        <div className="home-body">
-          <h1> JOSHGRID </h1>
-          <div id="login-container">
-            <input name="username" type="text" />
-            <input name="password" type="password" />
-          </div>
-          <section className="hero">
-            <div className="hero-body">
-              <div className="container">
-                <h1 className="title">
-                  Hero title
-                </h1>
-                <h2 className="subtitle">
-                  Hero subtitle
-                </h2>
-              </div>
+        <div className="jg-brandname">
+          <h1> JOSHGRID </h1> 
+        </div>
+        <div id="home-body">
+          <div id="login-form">
+            <input className="jg-input" name="username" type="text" placeholder="Username" />
+            <input className="jg-input" name="password" type="password" placeholder="Password" />
+            <div className="control">
+              <button id="login-button" className="button is-primary">Login</button>
             </div>
-          </section>
+            <span className="cta-signup">New to JOSHGRID? <a href="#">Sign Up</a></span>
+          </div>
+              <div className="jg-container">
+                <TypedText
+                  strings={[
+                    'Some <i>strings</i> are slanted',
+                    'Some <strong>strings</strong> are bold',
+                    'HTML characters &times; &copy;'
+                  ]}
+                />
+              <span id="typed"></span>
+              </div>
         </div>
         <Footer />
       </div>

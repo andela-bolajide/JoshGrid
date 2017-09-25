@@ -22,3 +22,4 @@ client/bundles/
 webpack-stats.json
 client/css/animate.css/
 client/css/bulma/
+venv/

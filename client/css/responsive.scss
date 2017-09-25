@@ -1,0 +1,33 @@
+@media (max-width: 32.5rem ) {
+  #home-body {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #login-form {
+    width: 80%;
+    margin: 0;
+  }
+
+  .hero-body {
+    padding: 1rem 0.5rem;
+  }
+
+  .footer-text {
+    font-size: 0.6rem;
+  }
+
+  .cta-signup {
+    font-size: 0.7rem;
+  }
+  .jg-brandname {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .jg-container {
+    margin: 0 auto;
+  }
+}

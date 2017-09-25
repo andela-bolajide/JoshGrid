@@ -5,5 +5,6 @@ import ReactDOM from "react-dom";
 import Routes from './routes';
 
 import '../css/bulma/bulma.sass';
+import '../css/responsive.scss';
 
 ReactDOM.render(<Routes />, document.getElementById('app'));
