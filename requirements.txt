@@ -34,7 +34,7 @@ redis==2.10.5
 requests==2.14.2
 sendgrid==4.1.0
 simplegeneric==0.8.1
-six==1.10.0
+six==1.11.0
 traitlets==4.3.2
 urllib3==1.21.1
 vine==1.1.4
