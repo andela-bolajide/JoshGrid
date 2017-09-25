@@ -1,6 +1,7 @@
-import os, sys
+"""Development specific settings."""
+import os
+import sys
 
-# Production specific settings
 from .base import *
 
 DEBUG = True
@@ -8,7 +9,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

@@ -10,4 +10,4 @@ N/A
 #### Screenshot(s)
 N/A
 
-#### What are the relevant github issues?
+#### What are the relevant github issues/Trello/Pivotal Tracker stories?

@@ -1,0 +1,15 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #000;
+  height: 2.5rem;
+  width: 100vw;
+  text-align: center;
+  letter-spacing: 0.25rem;
+  color: #fff;
+}
+
+.footer-text {
+  line-height: 2.5rem;
+  
+}

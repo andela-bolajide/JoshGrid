@@ -4,7 +4,7 @@ dependencies:
 
 test:
   override:
-    - yarn test
+    - ./run-test.sh frontend
 
 machine:
   timezone:

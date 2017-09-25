@@ -1,0 +1,60 @@
+// @import 'bulma/bulma.scss';
+
+/* Color Pallette */
+$colors: (
+  light: #FFF,
+  dark: #000,
+  lightBrown: #C5B1B0,
+  darkBrown: #CBB9B5
+);
+
+// Global Rule Definitions
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100%;
+  height: 100vh;
+  max-height: 100%;
+}
+
+body, div, h1, h2, h3, h4, p, a {
+  font-family: 'Saira Extra Condensed';
+  font-weight: 300;
+}
+
+.jg-input {
+  padding: 5px ;
+  outline: none;
+  width: 100%;
+  height: 2.5rem;
+  border: none;
+  border-bottom: 2px solid map-get($colors, lightBrown );
+  background: none;
+}
+
+.jg-brandname {
+  width: 20%;
+  text-align: center;
+  margin-left: 1rem;
+  h1 {
+    border: 0.0625rem solid #c3b3b1;
+    background: rgba(154, 137, 133, 0.4);
+    padding: 0.5rem;  
+    text-transform: uppercase;
+    letter-spacing: 0.39rem;
+    font-weight: 800;
+    color: black;
+  }
+}
+
+.jg-typed-text .title {
+  span {
+    color: map-get($colors, light );
+  }
+}
+

@@ -1,5 +1,5 @@
 from celery import shared_task
 
 @shared_task
-def add(a,b):
-    return a + b
+def add(x,y):
+	return x+y

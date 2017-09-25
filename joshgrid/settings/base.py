@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-from os.path import join
 import os
 
 import dotenv
@@ -37,11 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'joshgrid.mail_api',
+    'joshgrid.mail_app',
     'django_celery_beat',
     'django_celery_results',
     'rest_framework',
-    'joshgrid.bolaji',
-    "anymail",
+    'anymail',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -141,8 +141,26 @@ REST_FRAMEWORK = {
 ANYMAIL = {
     # (exact settings here depend on your ESP...)
     "MAILGUN_API_KEY": dotenv.get('MAILGUN_ACCESS_KEY'),
-    "MAILGUN_SENDER_DOMAIN": dotenv.get('MAILGUN_SERVER_NAME'),  # your Mailgun domain, if needed
+    # your Mailgun domain, if needed
+    "MAILGUN_SENDER_DOMAIN": dotenv.get('MAILGUN_SERVER_NAME'),
 }
 
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
-DEFAULT_FROM_EMAIL = dotenv.get('DEFAULT_FROM_EMAIL', default="mail@joshgrid.com")  # if you don't already have this in settings
+# or sendgrid.EmailBackend, or...
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+DEFAULT_FROM_EMAIL = dotenv.get(
+    'DEFAULT_FROM_EMAIL',
+    default="mail@joshgrid.com"
+)  # if you don't already have this in settings
+
+STATICFILES_DIRS = (
+    # We do this so that django's collectstatic copies or our bundles to
+    # the STATIC_ROOT or syncs them to whatever storage we use.
+    os.path.join(BASE_DIR, 'client'),
+)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}

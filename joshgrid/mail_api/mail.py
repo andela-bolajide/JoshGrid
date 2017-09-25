@@ -1,7 +1,9 @@
+from celery import shared_task
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 
+@shared_task
 def local_send_email(request):
     print(settings)
     subject = request.POST.get('mail_subject', '')
