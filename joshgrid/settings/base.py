@@ -114,8 +114,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    # We do this so that django's collectstatic copies or our bundles to
+    # the STATIC_ROOT or syncs them to whatever storage we use.
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 #
 # CORS headers: allow all hosts to access the API
@@ -152,11 +161,6 @@ DEFAULT_FROM_EMAIL = dotenv.get(
     default="mail@joshgrid.com"
 )  # if you don't already have this in settings
 
-STATICFILES_DIRS = (
-    # We do this so that django's collectstatic copies or our bundles to
-    # the STATIC_ROOT or syncs them to whatever storage we use.
-    os.path.join(BASE_DIR, 'client'),
-)
 
 WEBPACK_LOADER = {
     'DEFAULT': {

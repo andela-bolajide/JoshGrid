@@ -1,12 +1,18 @@
-export default function JGReducer (state={}, action={}) {
-  switch(action.type) {
-    case 'action1': 
+/**
+ * Sample reducer definition.
+ * @param {object} state the state you'd like to alter
+ * @param {object} action the action to be processed
+ *
+ * @return {object}
+ */
+export default const JGReducer = (state = {}, action = {}) => {
+  switch (action.type) {
+    case 'action1':
       return {
-        value: "some text"
-      }
+        value: 'some text'
+      };
+
     default:
-      return {
-        value: "no value"
-    }
-  }
-}
+      return state;
+  };
+};

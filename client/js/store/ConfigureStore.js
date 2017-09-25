@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers/RootReducer';
 
 /**
- * @param {object} initialState 
+ * @param {object} initialState
  * @returns {func} createStore
  */
 export default function configureStore(initialState) {

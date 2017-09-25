@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ExtractAppCSS = new ExtractTextPlugin({
   filename: 'css/app.css',
   allChunks: true
-});
+});333333
 const ExtractVendorCSS = new ExtractTextPlugin({
   filename: 'css/vendor.css',
   allChunks: true
@@ -67,7 +67,7 @@ module.exports = {
         loader: 'source-map-loader'
       },
       {
-        test: /\.scss$/,
+        test: /(\.scss|sass)$/,
         loader: ExtractAppCSS.extract({
           fallback: 'style-loader',
           use: 'css-loader?sourceMap!csso-loader!sass-loader'
