@@ -1,7 +1,7 @@
 amqp==2.2.1
 appnope==0.1.0
 billiard==3.5.0.3
-celery==4.0.2
+celery==4.1.0
 cloudinary==1.8.0
 coverage==4.4.1
 coveralls==1.1
