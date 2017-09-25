@@ -31,7 +31,7 @@ python-env==1.0.0
 python-http-client==3.0.0
 pytz==2017.2
 redis==2.10.5
-requests==2.14.2
+requests==2.18.4
 sendgrid==4.1.0
 simplegeneric==0.8.1
 six==1.10.0
