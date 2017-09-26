@@ -5,7 +5,7 @@
  *
  * @return {object}
  */
-export default const JGReducer = (state = {}, action = {}) => {
+const JGReducer = (state = {}, action = {}) => {
   switch (action.type) {
     case 'action1':
       return {
@@ -16,3 +16,5 @@ export default const JGReducer = (state = {}, action = {}) => {
       return state;
   };
 };
+
+export default JGReducer;
