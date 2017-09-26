@@ -2,7 +2,6 @@
  * Sample reducer definition.
  * @param {object} state the state you'd like to alter
  * @param {object} action the action to be processed
- *
  * @return {object}
  */
 const JGReducer = (state = {}, action = {}) => {
@@ -14,7 +13,7 @@ const JGReducer = (state = {}, action = {}) => {
 
     default:
       return state;
-  };
+  }
 };
 
 export default JGReducer;
