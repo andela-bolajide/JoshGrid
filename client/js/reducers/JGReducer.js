@@ -2,7 +2,7 @@
  * Sample reducer definition.
  * @param {object} state the state you'd like to alter
  * @param {object} action the action to be processed
- * @return {object}
+ * @returns {object} the state modified or not modified
  */
 const JGReducer = (state = {}, action = {}) => {
   switch (action.type) {
