@@ -33,6 +33,7 @@
             "MethodDefinition": true,
             "ClassDeclaration": true
         }
-    }]
+    }],
+    "import/extensions": 0
   }
 }

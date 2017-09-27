@@ -67,7 +67,7 @@ module.exports = {
         loader: 'source-map-loader'
       },
       {
-        test: /\.scss$/,
+        test: /(\.scss|sass)$/,
         loader: ExtractAppCSS.extract({
           fallback: 'style-loader',
           use: 'css-loader?sourceMap!csso-loader!sass-loader'
